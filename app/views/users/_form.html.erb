@@ -1,0 +1,20 @@
+<%= form_for(@user) do |f| %>
+
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2>No se puede guardar por: </h2>
+			<ul>
+			<% @user.errors.messages.values. each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.text_field :first_name, placeholder: "Nombre:" %>
+	<%= f.text_field :last_name, placeholder: "Apellido:" %>
+	<%= f.select(:role, ['superadmin', 'instructor', 'nutritionist', 'student']) %>
+
+	<%= f.submit %>
+
+<%end %>

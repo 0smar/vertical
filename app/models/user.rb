@@ -8,4 +8,21 @@ class User < ActiveRecord::Base
   validates :role, presence:true
 
   ROLES = %i[superadmin instructor nutriologist student]
+
+  def superadmin?
+  	role == "superadmin"
+  end
+
+  def instructor?
+  	role == "instructor"
+  end
+
+  def nutritionist?
+  	role == "nutritionist"
+  end
+
+  def student?
+  	role == "student"
+  end
+  
 end

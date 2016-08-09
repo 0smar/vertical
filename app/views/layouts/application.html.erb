@@ -8,6 +8,27 @@
 </head>
 <body>
 
+<% if !user_signed_in? %>
+	<%= link_to "Login", new_user_session_path %>
+<% else %>
+	<%= link_to "Cerrar Sesión", destroy_user_session_path %><br>
+	<%= link_to "Perfil", current_user %><br>
+
+	<% if current_user.superadmin? %>
+		<%= link_to "Admin Panel", welcome_admin_panel_path %>
+	<% end %>
+	<% if current_user.instructor? %>
+		<%= link_to "Admin Panel", welcome_instructor_panel_path %>
+	<% end %>
+	<% if current_user.nutritionist? %>
+		<%= link_to "Admin Panel", welcome_nutritionist_panel_path %>
+	<% end %>
+	<% if current_user.student? %>
+		<%= link_to "Admin Panel", welcome_student_panel_path %>
+	<% end %>
+<%end%>
+	
+
 <%= yield %>
 
 </body>
